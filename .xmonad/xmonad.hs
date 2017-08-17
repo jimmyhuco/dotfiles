@@ -61,7 +61,7 @@ myKeys =
     [ ((mMask,               xK_t     ), spawn term)
     , ((mMask,               xK_d     ), spawn dmenu)
     , ((mMask,               xK_c     ), spawn "chromium")
-    , ((mMask,               xK_e     ), spawn "emacs")
+    , ((mMask,               xK_e     ), spawn "/home/jimmy/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/emacs/emacsclient.sh --no-wait") -- emacs with user path and start server
     , ((mMask .|. shiftMask, xK_c     ), kill)
  --   , ((0, xK_F6), raiseVolume 4 >>= alert)
  --   , ((0, xK_F7), raiseVolume 4 >>= alert)

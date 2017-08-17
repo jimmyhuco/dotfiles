@@ -10,7 +10,7 @@ sudo pacman -S --noconfirm base-devel btrfs-progs intel-ucode zsh wget curl git 
 sudo pacman -S --noconfirm lightdm lightdm-gtk-greeter # Display Manager
 sudo pacman -S --noconfirm xmonad xmonad-contrib xmobar xorg-xrdb xorg-xmodmap xorg-xdpyinfo xorg-xsetroot feh dmenu rxvt-unicode dzen2 # Window Manager
 sudo pacman -S --noconfirm adobe-source-code-pro-fonts ttf-liberation ttf-hack ttf-roboto noto-fonts noto-fonts-cjk adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts adobe-source-han-sans-tw-fonts ttf-dejavu ttf-arphic-ukai ttf-arphic-uming opendesktop-fonts wqy-microhei wqy-zenhei wqy-bitmapfont # Fonts
-sudo pacman -S --noconfirm vim emacs ibus-rime ripgrep netstat-nat pandoc fzf chromium pepper-flash shadowsocks-libev htop tree glances # Tools
+sudo pacman -S --noconfirm vim emacs ibus-rime ripgrep thefuck bind-tools netstat-nat pandoc chromium pepper-flash shadowsocks-libev htop tree glances # Tools
 
 
 # Enable system services
@@ -25,6 +25,7 @@ chsh -s /usr/bin/zsh
 # add user and login with the use account
 # install aura (git clone https://aur.archlinux.org/aura.git)
 # sudo aura -Akua ttf-iosevka-haskell
+# sudo aura -Akua fzf-git fzf-extras-git
 # isntall hardware relative drivers
 # install cabal
 # install stack
