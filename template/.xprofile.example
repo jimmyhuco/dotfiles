@@ -1,7 +1,13 @@
-xrandr --output Virtual-0 --mode 1680x1050
-setxkbmap de
-feh --bg-fill ~/Images/anime-girl.png
+xrandr --output eDP1 --mode 2736x1824 --dpi 267
+setxkbmap us
+feh --bg-fill $HOME/Downloads/1.jpg
 xsetroot -cursor_name left_ptr
 
 #Run the cpp preprocesser to allow "define" statements in .Xdefaults
 xrdb $HOME/.Xdefaults
+
+# use ibus + rime input method
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon --xim -r -d

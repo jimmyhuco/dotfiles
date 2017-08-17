@@ -8,6 +8,8 @@ import           XMonad.Hooks.FadeInactive
 import           XMonad.Hooks.ManageDocks
 import           XMonad.Hooks.SetWMName
 import           XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
+--import XMonad.Actions.Volume
+--import XMonad.Util.Dzen
 
 import           XMonad.Layout.Spacing
 
@@ -27,9 +29,9 @@ mMask = mod4Mask
 myWorkspaces :: [String]
 myWorkspaces = [devel, code, web]
                where
-                 web   = "   ^i(/home/creek/.xmonad/large_icons/www.xbm)"
-                 code  = "   ^i(/home/creek/.xmonad/large_icons/code.xbm)"
-                 devel = "   ^i(/home/creek/.xmonad/large_icons/Devel.xbm)"
+                 web   = "   ^i(/home/jimmy/.xmonad/large_icons/www.xbm)"
+                 code  = "   ^i(/home/jimmy/.xmonad/large_icons/code.xbm)"
+                 devel = "   ^i(/home/jimmy/.xmonad/large_icons/Devel.xbm)"
 
 scratchpads :: [NamedScratchpad]
 scratchpads =
@@ -45,12 +47,24 @@ scratchpads =
                               (resource =? label)
                               mySPFloat
 
+{-
+alert = dzenConfig centered . show . round
+centered =
+        onCurr (center 150 66)
+    >=> font "-*-helvetica-*-r-*-*-64-*-*-*-*-*-*-*"
+    >=> addArgs ["-fg", "#80c0ff"]
+    >=> addArgs ["-bg", "#000040"]
+-}
+
+
 myKeys =
     [ ((mMask,               xK_t     ), spawn term)
     , ((mMask,               xK_d     ), spawn dmenu)
     , ((mMask,               xK_c     ), spawn "chromium")
     , ((mMask,               xK_e     ), spawn "emacs")
     , ((mMask .|. shiftMask, xK_c     ), kill)
+ --   , ((0, xK_F6), raiseVolume 4 >>= alert)
+ --   , ((0, xK_F7), raiseVolume 4 >>= alert)
 
       -- Scratchpads
     , ((mMask, xK_Return              ), namedScratchpadAction scratchpads "term")
@@ -79,7 +93,7 @@ myKeys =
                      , "-sf \"#2d2d2d\" "
                      , "-nb \"#2d2d2d\" "
                      , "-nf grey "
-                     , "-fn 'Source Code Pro-9'` "
+                     , "-fn 'Source Code Pro-15'` "
                      , "&& eval \"$exe\""
                      ]
 
@@ -116,9 +130,12 @@ myLogHook dzproc =
     }
 
 myStartupHook :: X ()
-myStartupHook = setWMName "LG3D"
+myStartupHook = setWMName "SP4"
+  -- spawnOnce "ibus-daemon --xim -r -d"
 
+-- bar1Width = "1824"
 bar1Width = "1600"
+-- bar2Width = "2736"
 bar2Width = "2060"
 barHeight = "'56'"
 
@@ -134,6 +151,7 @@ myConkyBar =
   ++ bar2Width ++ "' -h " ++ barHeight ++ " -p $OPTS -xs 1 -fg '"
   ++ foreground ++ "' -bg '" ++ background
   ++ "' -fn '" ++ myFont ++ "'"
+
 
 main :: IO ()
 main = do
@@ -154,7 +172,7 @@ main = do
 
 color8, color4, myFont, background, foreground :: String
 
-myFont = "-*-Pragmata Pro-*-*-*-*-30-*-*-*-*-*-*-*"
+myFont = "-*-Iosevka-*-*-*-*-30-*-*-*-*-*-*-*"
 
 background = "#232323"
 foreground = "#CBCBCB"

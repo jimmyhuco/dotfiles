@@ -8,15 +8,19 @@ URxvt.resize-font.bigger: C-Up
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
+! input method rime support
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpo
+
 
 ! font
-URxvt*font: xft:Pragmata\ Pro:size=13:antialias=true:hinting=true,xft:Liberation Mono:antialias=true:hinting=true
+URxvt*font: xft:Iosevka:size=13:antialias=true:hinting=true,xft:Liberation Mono:antialias=true:hinting=true
 
 ! terminal padding
 URxvt.internalBorder: 25
 
 ! uncomment for transparent terminal if you are ready to be made fun of in #rice
-! URxvt.transparent:	true
+URxvt.transparent:	true
 URxvt.shading:		15
 URxvt.letterSpace: -1
 
@@ -27,7 +31,7 @@ Xft.hintstyle:  hintfull
 Xft.hinting: 1
 ! Xft.hinting: 0
 Xft.antialias: 1
-Xft.dpi: 140
+Xft.dpi: 200
 Xft.rgba: rgb
 
 ! clickable links, clipboard support, mouse wheel support, and on the fly font resizing
