@@ -9,7 +9,7 @@ mount -o compress=lzo /dev/vda /mnt
 
 cd /mnt
 btrfs su cr @
-btrfs su cr @boot
+#btrfs su cr @boot
 btrfs su cr @home
 btrfs su cr @log
 btrfs su cr @pkg
@@ -22,7 +22,8 @@ umount /mnt
 mount -o compress=lzo,subvol=@ /dev/vda /mnt
 cd /mnt
 mkdir -p {boot,home,srv,var/{log,cache/pacman/pkg,tmp}}
-mount -o compress=lzo,subvol=@boot /dev/vda boot
+#mount -o compress=lzo,subvol=@boot /dev/vda boot
+mount /dev/efi boot
 mount -o compress=lzo,subvol=@home /dev/vda home
 mount -o compress=lzo,subvol=@log /dev/vda var/log
 mount -o compress=lzo,subvol=@pkg /dev/vda var/cache/pacman/pkg
