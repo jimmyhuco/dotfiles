@@ -93,7 +93,7 @@ myKeys =
                      , "-sf \"#2d2d2d\" "
                      , "-nb \"#2d2d2d\" "
                      , "-nf grey "
-                     , "-fn 'Source Code Pro-15'` "
+                     , "-fn 'Source Code Pro-25'` "
                      , "&& eval \"$exe\""
                      ]
 
@@ -130,14 +130,13 @@ myLogHook dzproc =
     }
 
 myStartupHook :: X ()
-myStartupHook = setWMName "SP4"
-  -- spawnOnce "ibus-daemon --xim -r -d"
+myStartupHook = setWMName "Blade"
 
 -- bar1Width = "1824"
-bar1Width = "1600"
+bar1Width = "1080"
 -- bar2Width = "2736"
-bar2Width = "2060"
-barHeight = "'56'"
+bar2Width = "1920"
+barHeight = "'46'"
 
 myStatusBar, myConkyBar, bar1Width, bar2Width :: String
 myStatusBar =
@@ -162,8 +161,8 @@ main = do
         focusFollowsMouse  = True,
         borderWidth        = 0,
         modMask            = mMask,
-        workspaces         = myWorkspaces,
-        layoutHook         = smartSpacing 20 $ avoidStruts myLayout,
+        -- workspaces         = myWorkspaces,
+        layoutHook         = smartSpacing 10 $ avoidStruts myLayout,
         manageHook         = myManageHook <+> manageDocks,
         handleEventHook    = myEventHook <+> docksEventHook,
         logHook            = myLogHook dzproc,
@@ -172,7 +171,7 @@ main = do
 
 color8, color4, myFont, background, foreground :: String
 
-myFont = "-*-Iosevka-*-*-*-*-30-*-*-*-*-*-*-*"
+myFont = "-*-Iosevka-*-*-*-*-20-*-*-*-*-*-*-*"
 
 background = "#232323"
 foreground = "#CBCBCB"

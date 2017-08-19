@@ -31,7 +31,7 @@ mount -o compress=lzo,subvol=@srv /dev/vda srv
 mount -o compress=lzo,subvol=@tmp /dev/vda var/tmp
 
 
-pacstrap -i /mnt base
+pacstrap -i /mnt base ethtools openssh wifi-menu dialog iw xf86-video-nouveau 
 
 
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -43,4 +43,8 @@ locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "your-hostname" > /etc/hostname # Replace your-hostname with your value
 vim /etc/hosts # Configure 127.0.0.1 and ::1 lines accordingly
+# use latest killer driver
+# ethtool -i interface_name
+# cd /lib/firmware/ath10k/QCA6174/hw3.0
+# cp 4.4.1/firmware-6.bin_WLAN.RM.4.4.1-00026-QCARMSWP-1 firmware-6.bin
 sh install_arch.sh

@@ -25,7 +25,7 @@ antigen bundle thefuck
 antigen bundle z
 antigen bundle web-search
 antigen bundle extract
-antigen bundle ssh-agent
+#antigen bundle ssh-agent
 antigen bundle zsh_reload
 
 # Load the theme.
@@ -37,3 +37,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Tell antigen that you're done.
 antigen apply
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

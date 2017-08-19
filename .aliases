@@ -1,1 +1,5 @@
 alias def='sdcv -c'
+alias vl='alsamixer'
+alias sl='xbacklight'
+alias sl-50='xbacklight -set 50'
+alias sl-70='xbacklight -set 70'
