@@ -7,10 +7,10 @@ pwd=`cd "$dir" > /dev/null 2>&1 && pwd`
 
 sudo pacman -Syu
 sudo pacman -S --noconfirm base-devel btrfs-progs intel-ucode zsh wget curl git # Base
-sudo pacman -S --noconfirm xorg-server lightdm lightdm-gtk-greeter # Display Manager
+sudo pacman -S --noconfirm xorg-server lightdm lightdm-gtk-greeter bumblebee mesa nvidia # Display Manager
 sudo pacman -S --noconfirm xmonad xmonad-contrib xmobar xorg-xrdb xorg-xmodmap xorg-xdpyinfo xorg-xsetroot feh dmenu rxvt-unicode dzen2 conky # Window Manager
 sudo pacman -S --noconfirm adobe-source-code-pro-fonts ttf-liberation ttf-hack ttf-roboto noto-fonts noto-fonts-cjk adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts adobe-source-han-sans-tw-fonts ttf-dejavu ttf-arphic-ukai ttf-arphic-uming opendesktop-fonts wqy-microhei wqy-zenhei wqy-bitmapfont # Fonts
-sudo pacman -S --noconfirm vim emacs ibus-rime ripgrep thefuck bind-tools netstat-nat pandoc chromium pepper-flash shadowsocks-libev htop tree glances tlp tlp-rdw # Tools
+sudo pacman -S --noconfirm vim emacs ibus-rime ripgrep thefuck bind-tools netstat-nat pandoc chromium pepper-flash shadowsocks-libev libsodium htop tree glances scdv tlp tlp-rdw thermald smartmontools # Tools
 
 
 # Enable system services
@@ -40,3 +40,7 @@ chsh -s /usr/bin/zsh
 # install rbenv
 # install thefuck
 # check your dirver lspci -k | grep -A 2 -E "(VGA|3D)"
+# gpasswd -a jimmy bumblebee
+# sudo gpasswd -a jimmy bumblebee
+# sudo systemctl enable bumblebeed.service
+
