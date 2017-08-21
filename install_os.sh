@@ -31,7 +31,7 @@ mount -o compress=lzo,subvol=@srv /dev/vda srv
 mount -o compress=lzo,subvol=@tmp /dev/vda var/tmp
 
 
-pacstrap -i /mnt base ethtools openssh wifi-menu dialog iw
+pacstrap -i /mnt base ethtools openssh wifi-menu dialog iw wpa_supplicant
 
 
 genfstab -U /mnt >> /mnt/etc/fstab
