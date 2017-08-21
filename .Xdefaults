@@ -31,7 +31,7 @@ Xft.hintstyle:  hintfull
 Xft.hinting: 1
 ! Xft.hinting: 0
 Xft.antialias: 1
-Xft.dpi: 144
+Xft.dpi: 120
 Xft.rgba: rgb
 
 ! clickable links, clipboard support, mouse wheel support, and on the fly font resizing

@@ -1,6 +1,11 @@
-xrandr --output eDP1 --mode 2736x1824 --dpi 267
+#xrandr --setprovideroutputsource modesetting NVIDIA-0
+#xrandr --auto
+xrandr --output eDP-1 --mode 1920x1080
+
 setxkbmap us
-feh --bg-fill $HOME/Downloads/1.jpg
+
+feh --bg-fill $HOME/Downloads/Archlabs-Wallpapers-master/Archlabs-Wallpapers-master/dreamscape-5000x3000.jpg
+
 xsetroot -cursor_name left_ptr
 
 #Run the cpp preprocesser to allow "define" statements in .Xdefaults
