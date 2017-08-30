@@ -14,7 +14,7 @@ URxvt.preeditType: OverTheSpo
 
 
 ! font
-URxvt*font: xft:Iosevka:size=11:antialias=true:hinting=true,xft:Liberation Mono:antialias=true:hinting=true
+URxvt*font: xft:Iosevka:size=13:antialias=true:hinting=true,xft:Liberation Mono:antialias=true:hinting=true
 
 ! terminal padding
 URxvt.internalBorder: 25

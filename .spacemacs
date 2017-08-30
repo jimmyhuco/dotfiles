@@ -54,7 +54,7 @@ This function should only modify configuration layer settings."
              shell-default-term-shell "/bin/zsh"
              shell-default-position 'bottom)
 
-     (colors :variables colors-enable-nyan-cat-progress-bar t)
+     ;; (colors :variables colors-enable-nyan-cat-progress-bar t)
      spell-checking
      syntax-checking
 
@@ -70,7 +70,7 @@ This function should only modify configuration layer settings."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(s shakespeare-mode tablist)
+   dotspacemacs-additional-packages '(github-theme s shakespeare-mode tablist fzf)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -360,20 +360,33 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
           ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
           ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
-  (setq-default dotspacemacs-themes '(material
-                                      material-light
-                                      spacemacs-light
-                                      rebecca
+  ;; (load "color-theme-colorful-obsolescence")
+
+  ;; (setq-default dotspacemacs-themes '(material
+  ;;                                     material-light
+  ;;                                     spacemacs-light
+  ;;                                     rebecca
+  ;;                                     spolsky
+  ;;                                     leuven
+  ;;                                     junio
+  ;;                                     organic-green))
+
+  (setq-default dotspacemacs-themes '(github
                                       spolsky
-                                      leuven
-                                      junio
-                                      organic-green))
+                                      graham))
+
+
+  ;; (setq-default dotspacemacs-themes '(
+  ;;                                     (modern-dark :location (recipe :fetcher github :repo "fuxialexander/modern-light-theme"))
+  ;;                                     (modern-light :location (recipe :fetcher github :repo "fuxialexander/modern-light-theme"))
+  ;;                                     (modern-dawn :location (recipe :fetcher github :repo "fuxialexander/modern-light-theme"))
+  ;;                                     ))
 
   (setq-default dotspacemacs-default-font '("Iosevka"
                                             :size 20
-                                            :weight bold
+                                            :weight normal
                                             :width normal
-                                            :powerline-scale 1.1))
+                                            :powerline-scale 1.5))
 
 
   )
@@ -393,6 +406,8 @@ before packages are loaded."
 
 
   (setq prettify-symbols-unprettify-at-point 'right-edge)
+  (setq-default line-spacing 4)
+
 
   (defun setup-iosevka-ligatures ()
     (setq prettify-symbols-alist
@@ -656,7 +671,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-category-capture packed helm company yasnippet avy hlint-refactor yapfify yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit symon sublime-themes string-inflection spaceline smeargle slim-mode shell-pop shakespeare-mode scss-mode sass-mode restart-emacs rebecca-theme rainbow-mode rainbow-identifiers rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pdf-tools pcre2el password-generator paradox orgit organic-green-theme org-projectile org-present org-pomodoro org-download org-bullets org-brain open-junk-file neotree multi-term move-text mmm-mode material-theme markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero info+ indent-guide impatient-mode hy-mode hungry-delete hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump define-word dante cython-mode company-web company-tern company-statistics company-ghci company-ghc company-cabal company-anaconda column-enforce-mode color-identifiers-mode coffee-mode cmm-mode clean-aindent-mode cargo auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (fzf helm-core haskell-mode flycheck markdown-mode alert magit magit-popup git-commit async rust-mode github-theme modern-light-theme modern-dawn-theme modern-dark-theme tao-theme espresso-theme minimal-theme gandalf-theme apropospriate-theme alect-themes org-category-capture packed helm company yasnippet avy hlint-refactor yapfify yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit symon sublime-themes string-inflection spaceline smeargle slim-mode shell-pop shakespeare-mode scss-mode sass-mode restart-emacs rebecca-theme rainbow-mode rainbow-identifiers rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pdf-tools pcre2el password-generator paradox orgit organic-green-theme org-projectile org-present org-pomodoro org-download org-bullets org-brain open-junk-file neotree multi-term move-text mmm-mode material-theme markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero info+ indent-guide impatient-mode hy-mode hungry-delete hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump define-word dante cython-mode company-web company-tern company-statistics company-ghci company-ghc company-cabal company-anaconda column-enforce-mode color-identifiers-mode coffee-mode cmm-mode clean-aindent-mode cargo auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
