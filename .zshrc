@@ -18,7 +18,7 @@ antigen bundle git
 antigen bundle cabal
 antigen bundle stack
 antigen bundle nvm
-antigen bundle pyenv
+#antigen bundle pyenv
 antigen bundle rbenv
 antigen bundle emacs
 antigen bundle thefuck

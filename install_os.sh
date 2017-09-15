@@ -45,6 +45,7 @@ echo "your-hostname" > /etc/hostname # Replace your-hostname with your value
 vim /etc/hosts # Configure 127.0.0.1 and ::1 lines accordingly
 # use latest killer driver
 # ethtool -i interface_name
+# https://raw.githubusercontent.com/kvalo/ath10k-firmware/master/QCA6174/hw3.0/4.4.1/firmware-6.bin_WLAN.RM.4.4.1-00051-QCARMSWP-1
 # cd /lib/firmware/ath10k/QCA6174/hw3.0
-# cp 4.4.1/firmware-6.bin_WLAN.RM.4.4.1-00026-QCARMSWP-1 firmware-6.bin
+# cp 4.4.1/firmware-6.bin_WLAN.RM.4.4.1-00051-QCARMSWP-1 firmware-6.bin
 sh install_arch.sh

@@ -1,4 +1,4 @@
-alias def='sdcv -c'
+alias def="sdcv --color  -u \"Merriam-Webster's Advanced Learner's Dictionary (En-En)\""
 alias vl='alsamixer'
 alias l40='light -S 40'
 alias lu20='light -A 20'
@@ -8,3 +8,5 @@ alias rg10='rg -B 10 -A 10'
 alias fmr='ranger'
 alias pdfr='zathura --fork'
 alias remap='xmodmap ~/.Xmodmap'
+alias www='chromium'
+alias steam='optirun steam > /dev/null 2>&1 &'
