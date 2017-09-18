@@ -1,0 +1,195 @@
+;; -*- lisp -*-
+
+(in-package :stumpwm)
+
+;; Basics
+;; (set-prefix-key (kbd "C-e"))
+(setf *startup-message* NIL
+      *suppress-abort-messages* t
+      *shell-program* (getenv "SHELL"))
+
+(defvar *message-filters* '("Group dumped")
+  "Don't show these messages.")
+
+(defun message (fmt &rest args)
+  "Overwritten message function to allow filters"
+  (let ((msg-string (apply 'format nil fmt args)))
+    (unless (member msg-string *message-filters* :test #'string=)
+      (echo-string (current-screen) msg-string))))
+
+;; Modules
+(mapcar #'load-module '("ttf-fonts"
+			"winner-mode"
+			"globalwindows"
+			"amixer"))
+
+;; Looks
+(set-font (make-instance 'xft:font
+                         :family "Liberation Mono"
+		         :subfamily "Regular"
+                         :size 13))
+
+(setf *message-window-gravity* :center
+      *input-window-gravity* :center
+      *window-border-style* :thin
+      *message-window-padding* 10
+      *maxsize-border-width* 0
+      *normal-border-width* 0
+      *transient-border-width* 0
+      stumpwm::*float-window-border* 0
+      stumpwm::*float-window-title-height* 3
+      *mouse-focus-policy* :click)
+
+(set-normal-gravity :center)
+(set-maxsize-gravity :center)
+(set-transient-gravity :center)
+
+(set-fg-color "#eeeeee")
+(set-bg-color "#222222")
+(set-border-color "#222222")
+(set-focus-color "#39393d")
+(set-unfocus-color "#39393d")
+(set-win-bg-color "#1c1e1f")
+(set-float-focus-color "#16A085")
+(set-float-unfocus-color "#39393d")
+
+(setf *colors* (list "#1c1e1f"      ; 0 black
+                     "#ff6a6a"      ; 1 red
+                     "#66cd00"      ; 2 green
+                     "#ffd700"      ; 3 yellow
+                     "#4f94cd"      ; 4 blue
+                     "#c6e2ff"      ; 5 magenta
+                     "#00cdcd"      ; 6 cyan
+                     "#ffffff"))    ; 7 white
+
+(defun shift-windows-forward (frames win)
+  "Exchange windows through cycling frames."
+  (when frames
+    (let ((frame (car frames)))
+      (shift-windows-forward (cdr frames)
+                             (stumpwm::frame-window frame))
+      (when win
+        (stumpwm::pull-window win frame)))))
+
+;; Commands
+(defcommand run-or-raise-chromium () ()
+  (run-or-raise "chromium" '(:class "Chromium") T T))
+
+(defcommand run-or-raise-vivaldi () ()
+  (run-or-raise "vivaldi" '(:class "Vivaldi-snapshot") T T))
+
+
+(defcommand refresh-stuff () ()
+  (run-commands "mode-line" "mode-line")
+  (gnew "*refresh-group*")
+  (gkill)
+  (message "refreshed"))
+
+(defcommand rotate-windows () ()
+  (let* ((frames (stumpwm::head-frames (current-group) (current-head)))
+         (win (stumpwm::frame-window (car (last frames)))))
+    (shift-windows-forward frames win)))
+
+(defcommand windows-left-right () ()
+  "Open windows side by side"
+  (run-commands "only" "vsplit"))
+
+(defcommand windows-up-down () ()
+  "Open windows up and down"
+  (run-commands "only" "hsplit"))
+
+(defcommand raise-brightness () ()
+  (run-shell-command "light -A 5"))
+
+(defcommand lower-brightness () ()
+  (run-shell-command "light -U 5"))
+
+(amixer::defvolcontrol amixer-Master-5- "Master" "5%-")
+(amixer::defvolcontrol amixer-Master-5+ "Master" "5%+")
+
+
+(defcommand urxvt () ()
+  "Start an urxvt instance or switch to it, if it is already running."
+  (run-or-raise "urxvt" '(:instance "urxvt")))
+(define-key *root-map* (kbd "C-c") "urxvt")
+
+;; All the keys
+
+(define-key *top-map* (kbd "s-g") "toggle-gaps")
+(define-key *top-map* (kbd "s-r") "rotate-windows")
+(define-key *top-map* (kbd "s-v") "windows-left-right")
+(define-key *top-map* (kbd "s-h") "windows-up-down")
+(define-key *top-map* (kbd "s-f") "only")
+(define-key *top-map* (kbd "s-c") "fclear")
+(define-key *top-map* (kbd "s-l") "exec slock")
+
+(define-key *top-map* (kbd "XF86Launch5") "gselect 1")
+(define-key *top-map* (kbd "XF86Launch6") "gselect 2")
+(define-key *top-map* (kbd "XF86Launch7") "gselect 3")
+
+(define-key *top-map* (kbd "XF86Launch8") "lower-brightness")
+(define-key *top-map* (kbd "XF86Launch9") "raise-brightness")
+
+(define-key *top-map* (kbd "XF86MonBrightnessUp") "raise-brightness")
+(define-key *top-map* (kbd "XF86MonBrightnessDown") "lower-brightness")
+
+(define-key *top-map* (kbd "XF86AudioLowerVolume") "amixer-Master-5-")
+(define-key *top-map* (kbd "XF86AudioRaiseVolume") "amixer-Master-5+")
+(define-key *top-map* (kbd "XF86AudioMute") "amixer-Master-toggle")
+
+(define-key *root-map* (kbd "XF86Launch5") "pull 0")
+(define-key *root-map* (kbd "XF86Launch6") "pull 1")
+(define-key *root-map* (kbd "XF86Launch7") "pull 2")
+(define-key *root-map* (kbd "XF86Launch8") "pull 3")
+(define-key *root-map* (kbd "XF86Launch9") "pull 4")
+
+(define-key *root-map* (kbd "C-b") "run-or-raise-chromium")
+(define-key *root-map* (kbd "C-v") "run-or-raise-vivaldi")
+(define-key *root-map* (kbd "b") "windowlist")
+(define-key *root-map* (kbd "q") "refresh-stuff")
+(define-key *root-map* (kbd "TAB") "pull-hidden-other")
+
+(define-key *groups-map* (kbd "Right") "gnext")
+(define-key *groups-map* (kbd "Left") "gprev")
+(define-key *groups-map* (kbd "M-Right") "gnext-with-window")
+(define-key *groups-map* (kbd "M-Left") "gprev-with-window")
+(define-key *groups-map* (kbd "b") "global-windowlist")
+
+(defvar *winner-map* (make-sparse-keymap))
+(define-key *root-map* (kbd "c") '*winner-map*)
+(define-key *winner-map* (kbd "Left") "winner-undo")
+(define-key *winner-map* (kbd "Right") "winner-redo")
+
+;; Init
+(stumpwm:toggle-mode-line (stumpwm:current-screen) (stumpwm:current-head))
+(update-color-map (current-screen))
+
+;; Groups
+(setf (group-name (car (screen-groups (current-screen)))) "main")
+(run-commands "gnewbg docs" "gnewbg-float float")
+
+(clear-window-placement-rules)
+
+(define-frame-preference "float"
+    (nil nil t :class "DragDrop"))
+
+;; Hooks
+(add-hook *post-command-hook* (lambda (command)
+                                (when (member command winner-mode:*default-commands*)
+                                  (winner-mode:dump-group-to-file))))
+
+;; Update polybar group indicator
+(add-hook *post-command-hook* (lambda (command)
+                                (when (member command '(stumpwm:gnext
+                                                        stumpwm:gnext-with-window
+                                                        stumpwm:gprev
+                                                        stumpwm:gprev-with-window
+                                                        stumpwm:gother
+                                                        stumpwm:gkill
+                                                        stumpwm:gselect
+                                                        stumpwm:gmove-and-follow
+                                                        stumpwm:gnew
+                                                        stumpwm:gnew-float
+                                                        stumpwm:emacs
+                                                        globalwindows:global-windowlist))
+                                  (run-shell-command "polybar-msg hook stumpwmgroups 1"))))
