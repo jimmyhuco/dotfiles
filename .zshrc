@@ -5,10 +5,6 @@ for file in ~/.{aliases,exports,extras,functions}; do
 done
 unset file
 
-# typeset -U path
-path=(~/bin ~/.local/bin $path)
-export PATH
-#export TERM=xterm-256color
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -25,6 +21,7 @@ antigen bundle thefuck
 antigen bundle z
 antigen bundle web-search
 antigen bundle extract
+antigen bundle bower
 #antigen bundle ssh-agent
 antigen bundle zsh_reload
 
