@@ -1,13 +1,28 @@
 alias def="sdcv --color  -u \"Merriam-Webster's Advanced Learner's Dictionary (En-En)\""
-alias vl='alsamixer'
-alias l40='light -S 40'
-alias lu20='light -A 20'
-alias ld20='light -U 20'
-alias lc='light -G'
+#alias vl='alsamixer'
+#alias l40='light -S 40'
+#alias lu20='light -A 20'
+#alias ld20='light -U 20'
+#alias lc='light -G'
 alias rg10='rg -B 10 -A 10'
 alias fmr='ranger'
 alias pdfr='zathura --fork'
-alias remap='xmodmap ~/.Xmodmap && libinput-gestures-setup restart'
+alias remap='xmodmap ~/.Xmodmap'
+# && libinput-gestures-setup restart'
 alias www='chromium'
-alias steam='optirun steam > /dev/null 2>&1 &'
-alias battery='cat /sys/class/power_supply/BAT0/uevent'
+#alias steam='optirun steam > /dev/null 2>&1 &'
+#alias battery='cat /sys/class/power_supply/BAT0/uevent'
+alias vim=nvim
+alias vi=nvim
+
+# Aliases for software managment
+# pacman or pm
+alias pmsyu="sudo pacman -Syu --color=auto"
+alias pacman='sudo pacman --color auto'
+alias update='sudo pacman -Syu'
+# pacaur or pc
+alias pcsyu="pacaur -Syu"
+# packer or pk
+alias pks="packer -S"
+alias pksn="packer -S --noconfirm --noedit"
+alias pksyu="packer -Syu  --noconfirm --noedit"

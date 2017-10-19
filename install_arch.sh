@@ -10,7 +10,7 @@ sudo pacman -S --noconfirm base-devel btrfs-progs intel-ucode zsh wget curl git 
 sudo pacman -S --noconfirm xorg-server lightdm lightdm-gtk-greeter bumblebee mesa nvidia # Display Manager
 sudo pacman -S --noconfirm xmonad xmonad-contrib xmobar xorg-xrdb xorg-xmodmap xorg-xdpyinfo xorg-xsetroot feh dmenu rxvt-unicode dzen2 conky # Window Manager
 sudo pacman -S --noconfirm adobe-source-code-pro-fonts ttf-liberation ttf-hack ttf-roboto noto-fonts noto-fonts-cjk adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts adobe-source-han-sans-tw-fonts ttf-dejavu ttf-arphic-ukai ttf-arphic-uming opendesktop-fonts wqy-microhei wqy-zenhei wqy-bitmapfont # Fonts
-sudo pacman -S --noconfirm vim emacs ibus-rime ripgrep thefuck bind-tools netstat-nat pandoc chromium pepper-flash shadowsocks-libev libsodium htop tree glances scdv tlp tlp-rdw thermald smartmontools snapper # Tools
+sudo pacman -S --noconfirm vim emacs ibus-rime ripgrep thefuck bind-tools netstat-nat pandoc chromium pepper-flash shadowsocks-libev libsodium htop tree glances scdv tlp tlp-rdw thermald smartmontools snapper xclip # Tools
 
 
 # Enable system services
