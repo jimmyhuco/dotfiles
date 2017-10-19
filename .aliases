@@ -6,7 +6,7 @@ alias def="sdcv --color  -u \"Merriam-Webster's Advanced Learner's Dictionary (E
 #alias lc='light -G'
 alias rg10='rg -B 10 -A 10'
 alias fmr='ranger'
-alias pdfr='zathura --fork'
+#alias pdfr='zathura --fork'
 alias remap='xmodmap ~/.Xmodmap'
 # && libinput-gestures-setup restart'
 alias www='chromium'

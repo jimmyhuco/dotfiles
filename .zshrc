@@ -38,3 +38,5 @@ done
 unset file
 
 neofetch
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
