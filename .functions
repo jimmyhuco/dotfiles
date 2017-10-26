@@ -4,4 +4,5 @@ function mk() {
 }
 
 # add fzf key binding
-source /etc/profile.d/fzf.zsh
+#source /etc/profile.d/fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

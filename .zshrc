@@ -8,6 +8,7 @@ antigen bundle git
 antigen bundle cabal
 antigen bundle stack
 antigen bundle nvm
+antigen bundle vim-interaction
 #antigen bundle pyenv
 #antigen bundle rbenv
 #antigen bundle emacs
@@ -37,6 +38,4 @@ for file in ~/.{aliases,exports,functions}; do
 done
 unset file
 
-neofetch
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#neofetch
