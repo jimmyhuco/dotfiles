@@ -9,25 +9,26 @@ antigen bundle cabal
 antigen bundle stack
 antigen bundle nvm
 antigen bundle vim-interaction
-#antigen bundle pyenv
+antigen bundle pyenv
+antigen bundle perl
 #antigen bundle rbenv
-#antigen bundle emacs
+antigen bundle emacs
 #antigen bundle thefuck
 antigen bundle z
 antigen bundle web-search
 antigen bundle extract
 antigen bundle bower
-antigen bundle ssh-agent
-antigen bundle zsh_reload
+#antigen bundle ssh-agent
+#antigen bundle zsh_reload
 
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-#antigen theme ys
-antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
+antigen theme ys
+#antigen bundle mafredri/zsh-async
+#antigen bundle sindresorhus/pure
 
 # Tell antigen that you're done.
 antigen apply
@@ -39,3 +40,4 @@ done
 unset file
 
 #neofetch
+

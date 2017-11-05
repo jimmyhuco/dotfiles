@@ -6,3 +6,5 @@ function mk() {
 # add fzf key binding
 #source /etc/profile.d/fzf.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f ~/.local/perl5/perlbrew/etc/bashrc ] && source ~/.local/perl5/perlbrew/etc/bashrc

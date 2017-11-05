@@ -9,7 +9,7 @@ alias fmr='ranger'
 #alias pdfr='zathura --fork'
 alias remap='xmodmap ~/.Xmodmap'
 # && libinput-gestures-setup restart'
-alias www='chromium-dev'
+#alias www='chromium-dev'
 #alias steam='optirun steam > /dev/null 2>&1 &'
 #alias battery='cat /sys/class/power_supply/BAT0/uevent'
 alias vim=nvim
@@ -17,14 +17,14 @@ alias vi=nvim
 
 # Aliases for software managment
 # pacman or pm
-alias pmsyu="sudo pacman -Syu --color=auto"
-alias pacman='sudo pacman --color auto'
-alias update='sudo pacman -Syu'
+#alias pmsyu="sudo pacman -Syu --color=auto"
+#alias pacman='sudo pacman --color auto'
+#alias update='sudo pacman -Syu'
 # pacaur or pc
-alias pcsyu="pacaur -Syu"
+#alias pcsyu="pacaur -Syu"
 # packer or pk
-alias pks="packer -S"
-alias pksn="packer -S --noconfirm --noedit"
-alias pksyu="packer -Syu  --noconfirm --noedit"
+#alias pks="packer -S"
+#alias pksn="packer -S --noconfirm --noedit"
+#alias pksyu="packer -Syu  --noconfirm --noedit"
 
 alias open='xdg-open'

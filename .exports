@@ -3,7 +3,7 @@ PURE_PROMPT_SYMBOL=">"
 PURE_GIT_DOWN_ARROW="v"
 PURE_GIT_UP_ARROW="^"
 # typeset -U path
-path=(~/go/bin ~/bin ~/.local/bin $path)
+path=(~/bin ~/.local/bin $path)
 export PATH
 export LANG=en_US.UTF-8
 export TERM=xterm-256color 
@@ -17,3 +17,17 @@ export NVM_DIR="$HOME/.nvm"
 # export GTK_IM_MODULE=ibus
 # export XMODIFIERS=@im=ibus
 # export QT_IM_MODULE=ibus
+
+# go lang location
+export GOROOT=$HOME/.local/go1.9.2
+# go get location 
+export GOPATH=$HOME/.local/go
+export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+export PERLBREW_ROOT="$HOME/.local/perl5/perlbrew"
+export PERLBREW_HOME="$HOME/.local/.perlbrew"
+
+
+#export VISUAL=nvim
+#export EDITOR="$VISUAL"
+
+export EDITOR="emacsclient -c"

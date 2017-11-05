@@ -1,8 +1,3 @@
-set t_Co=256
-
-set nocompatible              " be iMproved, required
-
-
 call plug#begin('~/.config/nvim/plugged')
 " Plugins will go here in the middle.
 
@@ -60,9 +55,10 @@ Plug 'tweekmonster/nvim-api-viewer'
 Plug 'neovim/node-host'
 
 " Style
-Plug 'tomasr/molokai'
-Plug 'liuchengxu/space-vim-dark'
-Plug 'luochen1990/rainbow'
+" Plug 'tomasr/molokai'
+" Plug 'liuchengxu/space-vim-dark'
+" Plug 'luochen1990/rainbow'
+Plug 'dracula/vim'
 
 call plug#end()
 
@@ -77,7 +73,8 @@ set cursorline
 set modeline
 set ls=2
 
-colorscheme space-vim-dark " Modify the plugin source to use ctermbg 233 on line 83
+syntax on
+colorscheme dracula
 hi Comment cterm=italic
 hi Normal guibg=None ctermbg=None
 set nohlsearch
@@ -96,6 +93,8 @@ set splitright
 
 set nobackup
 set nowritebackup
+
+set noswapfile
 
 set scrolloff=5
 
@@ -120,6 +119,7 @@ vmap ; <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
 
 nmap <Leader>n :NERDTreeToggle<CR>
+nmap <Leader>r :NERDTreeFind<CR>
 nmap <Leader>o :set paste!<CR>
 nnoremap <Leader>b :buffer<Space>term
 nnoremap <Leader>g :CtrlPTag<CR>
@@ -211,6 +211,33 @@ if has('nvim')
   set inccommand=nosplit
 endif
 
+
+" nnoremap <silent> <Leader><Leader> :Files<CR>
+nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
+nnoremap <silent> <Leader>C        :Colors<CR>
+nnoremap <silent> <Leader><Enter>  :Buffers<CR>
+nnoremap <silent> <Leader>ag       :Ag <C-R><C-W><CR>
+nnoremap <silent> <Leader>AG       :Ag <C-R><C-A><CR>
+xnoremap <silent> <Leader>ag       y:Ag <C-R>"<CR>
+nnoremap <silent> <Leader>`        :Marks<CR>
+" nnoremap <silent> q: :History:<CR>
+" nnoremap <silent> q/ :History/<CR>
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
+
 function! s:Colors()
   let num = 255
   execute 'vnew'
@@ -289,6 +316,14 @@ endfunction
 function! ClipboardPaste()
   let @@ = system('xclip -o -selection clipboard')
 endfunction
+
+command! -bang -nargs=* Rg
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0)
+
 
 "vnoremap <silent> y y:call ClipboardYank()<cr>
 "vnoremap <silent> d d:call ClipboardYank()<cr>
