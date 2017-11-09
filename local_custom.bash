@@ -7,8 +7,19 @@ alias vim=nvim
 alias vi=nvim
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --follow --glob "!.git/*" --glob "!output/*" --glob "!bower_components/*" --glob "!.psc-package/*"'
 alias open=xdg-open
-alias pkg=eopkg
-alias pkgup="sudo eopkg up"
-alias pkgi="sudo eopkg it"
 alias remap="xmodmap $HOME/.Xmodmap"
 export PATH="$PATH:$HOME/.local/bin"
+
+# Aliases for software managment
+# pacman or pm
+alias pmsyu="sudo pacman -Syu --color=auto"
+alias pacman='sudo pacman --color auto'
+alias update='sudo pacman -Syu'
+
+# pacaur or pc
+alias pcsyu="pacaur -Syu"
+
+# yaourt keeps tmp folder cleaner than packer
+alias pks="yaourt -S --noconfirm "
+alias pksyu="yaourt -Syu --noconfirm"
+alias pksyua="yaourt -Syu  --aur --noconfirm"

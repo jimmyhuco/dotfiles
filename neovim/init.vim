@@ -12,11 +12,22 @@ Plug 'scrooloose/nerdtree'
 Plug 'pelodelfuego/vim-swoop'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'junegunn/vim-easy-align'
 
 
 " Purescript
 Plug 'raichoo/purescript-vim'
 Plug 'FrigoEU/psc-ide-vim'
+
+
+" Haskell
+Plug 'neomake/neomake'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
+Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
 
 
 
@@ -109,3 +120,40 @@ let g:UltiSnipsEditSplit="vertical"
 :nnoremap <A-j> <C-w>j
 :nnoremap <A-k> <C-w>k
 :nnoremap <A-l> <C-w>l
+
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+
+
+
+" Haskell
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords<Paste>
+
+" Conceal {{{
+" Use same color behind concealed unicode characters
+hi clear Conceal
+
+" Pretty unicode haskell symbols
+let g:haskell_conceal_wide = 1
+let g:haskell_conceal_enumerations = 1
+let hscoptions="𝐒𝐓𝐄𝐌xRtB𝔻w"
+
+" Disable haskell-vim omnifunc
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+hi ghcmodType ctermbg=black
+let g:ghcmod_type_highlight = 'ghcmodType'
+
+set tags=tags;/,codex.tags;/
