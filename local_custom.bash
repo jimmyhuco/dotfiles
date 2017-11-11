@@ -5,7 +5,7 @@
 export VISUAL=nvim
 alias vim=nvim
 alias vi=nvim
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --follow --glob "!.git/*" --glob "!output/*" --glob "!bower_components/*" --glob "!.psc-package/*"'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --follow --glob "!.git/*" --glob "!output/*" --glob "!bower_components/*" --glob "!.psc-package/*" --glob "!node_modules/*"'
 alias open=xdg-open
 alias remap="xmodmap $HOME/.Xmodmap"
 export PATH="$PATH:$HOME/.local/bin"
@@ -23,3 +23,13 @@ alias pcsyu="pacaur -Syu"
 alias pks="yaourt -S --noconfirm "
 alias pksyu="yaourt -Syu --noconfirm"
 alias pksyua="yaourt -Syu  --aur --noconfirm"
+
+
+alias mirror="sudo reflector --protocol https --latest 50 --number 20 --sort rate --save /etc/pacman.d/mirrorlist"
+alias mirrors=mirror
+alias sl="ls"
+alias pdw="pwd"
+#readable output
+alias df='df -h'
+
+neofetch

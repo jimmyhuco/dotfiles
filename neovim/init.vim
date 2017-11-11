@@ -44,6 +44,11 @@ set fileformats=unix,dos,mac
 colorscheme dracula
 hi Comment cterm=italic
 hi Normal guibg=None ctermbg=None
+" tabs and spaces handling
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 
 
 
@@ -63,7 +68,7 @@ let g:airline_powerline_fonts = 1
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!output/*" --glob "!bower_components/*" --glob "!.psc-package/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!output/*" --glob "!bower_components/*" --glob "!.psc-package/*" --glob "!node_modules/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 set grepprg=rg\ --vimgrep
 
@@ -157,3 +162,17 @@ hi ghcmodType ctermbg=black
 let g:ghcmod_type_highlight = 'ghcmodType'
 
 set tags=tags;/,codex.tags;/
+
+
+function! Mydict()
+  let expl=system('sdcv -n ' .
+        \  expand("<cword>"))
+  windo if
+        \ expand("%")=="diCt-tmp" |
+        \ q!|endif
+  25vsp diCt-tmp
+  setlocal buftype=nofile bufhidden=hide noswapfile
+  1s/^/\=expl/
+  1
+endfunction
+nmap F :call Mydict()<CR>
