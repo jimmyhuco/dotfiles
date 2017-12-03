@@ -32,7 +32,8 @@ Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
 
 
 " Style
-Plug 'dracula/vim'
+" Plug 'dracula/vim'
+Plug 'NLKNguyen/papercolor-theme'
 
 call plug#end()
 
@@ -41,7 +42,17 @@ set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,gbk,cp936,latin-1
 set fileformat=unix
 set fileformats=unix,dos,mac
-colorscheme dracula
+" colorscheme dracula
+set background=dark
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
+colorscheme PaperColor
+
 hi Comment cterm=italic
 hi Normal guibg=None ctermbg=None
 " tabs and spaces handling
@@ -176,3 +187,8 @@ function! Mydict()
   1
 endfunction
 nmap F :call Mydict()<CR>
+
+
+" https://andrew.stwrt.ca/posts/project-specific-vimrc/
+set exrc
+set secure

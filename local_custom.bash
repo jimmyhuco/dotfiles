@@ -1,14 +1,23 @@
 # bash_it
 # alias: clipboard fuck general git npm systemd yarn 
 # plugins: alias-completion base explain fzf git node nvm pyenv z                
-# complete: bash-it git npm nvm pip3 ssh system  
+# # complete: bash-it git npm nvm pip3 ssh system  
 export VISUAL=nvim
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --follow --glob "!.git/*" --glob "!output/*" --glob "!bower_components/*" --glob "!.psc-package/*" --glob "!node_modules/*"'
+export PATH="$PATH:$HOME/.local/bin"
+export PATH=~/.rakudobrew/bin:$PATH
+
+alias pdf="zathura --fork"
 alias vim=nvim
 alias vi=nvim
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --follow --glob "!.git/*" --glob "!output/*" --glob "!bower_components/*" --glob "!.psc-package/*" --glob "!node_modules/*"'
 alias open=xdg-open
 alias remap="xmodmap $HOME/.Xmodmap"
-export PATH="$PATH:$HOME/.local/bin"
+alias night="pgrep redshift || (redshift > /dev/null 2>&1 &)"
+
+# Temporary fix lede bug
+alias et256="export TERM=xterm-256color"
+
+alias dict="ydcv"
 
 # Aliases for software managment
 # pacman or pm
@@ -30,6 +39,6 @@ alias mirrors=mirror
 alias sl="ls"
 alias pdw="pwd"
 #readable output
-alias df='df -h'
+alias df="df -h"
 
 neofetch

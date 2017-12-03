@@ -65,12 +65,13 @@ set $right semicolon
 # use xrandr and/or arandr to know the names of your monitors
 # use this line to tell which monitor is on the right
 # xrandr --output DVI-I-2 --right-of DVI-I-1 --auto
-exec --no-startup-id xrandr --output HDMI2 --right-of HDMI1 --auto
+# exec --no-startup-id xrandr --output HDMI2 --right-of HDMI1 --auto
+exec --no-startup-id xrandr --dpi 120
 
 
 # my current setup
-set $firstMonitor HDMI1
-set $secondMonitor HDMI2
+# set $firstMonitor HDMI1
+# set $secondMonitor HDMI2
 
 #set $firstMonitor LVDS1
 #set $secondMonitor LVDS1
@@ -279,7 +280,7 @@ bindsym $mod+e layout toggle split
 
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -334,7 +335,7 @@ mode "resize" {
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # choose your font
-font pango:Noto Mono Regular 11
+font pango:Noto Mono Regular 13
 
 
 
@@ -349,7 +350,7 @@ font pango:Noto Mono Regular 11
 
 # Workspace 1 browser related
 assign [class="Firefox|Vivaldi-stable|Vivaldi-snapshot|Opera"]                      → 1
-assign [class="Chromium-dev|Chromium|Google-chrome"]                                → 1
+assign [class="Chromium|Google-chrome"]                                             → 1
 
 # Workspace 2 text editor related
 assign [class="sublime-text|sublime_text|Sublime_text|subl|Subl|subl3|Subl3"]       → 2
@@ -393,21 +394,22 @@ for_window [class="Spotify"] move to workspace 10
 # USER APPLICATIONS TO START AT BOOT
 
 #browser
-exec --no-startup-id chromium-dev
-for_window [class="Chromium-dev"] focus
+exec --no-startup-id chromium
+for_window [class="Chromium"] focus
 
 #text-editor
+#exec --no-startup-id sublime_text
 #exec --no-startup-id atom
 
 #file manager
-#exec --no-startup-id thunar
+# exec --no-startup-id thunar
 
 #Mail clients
 #exec --no-startup-id evolution
 
 #Music
 #exec --no-startup-id spotify
-#for_window [class="Spotify"] focus
+# for_window [class="Spotify"] focus
 
 
 
@@ -417,7 +419,7 @@ for_window [class="Chromium-dev"] focus
 # you may see a wheel - hashtag out things you do not want
 
 #Authentication dialog
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Updater
 exec --no-startup-id pamac-tray
@@ -442,21 +444,20 @@ exec_always --no-startup-id numlockx on
 exec --no-startup-id volumeicon
 
 #variety
-exec --no-startup-id variety
+# exec --no-startup-id variety
 
 # clipit
 exec --no-startup-id clipit
 
 #Conky
-#exec --no-startup-id conky -c ~/.conkyrc
-exec --no-startup-id conky -c ~/.config/i3/system-overview
+#exec --no-startup-id conky -c ~/.config/i3/system-overview
 
 
 #####################################################################################################################
 #################                                 system applications                               #################
 #####################################################################################################################
 
-exec --no-startup-id thunar --daemon &
+# exec --no-startup-id thunar --daemon &
 exec --no-startup-id xfce4-power-manager &
 # ommitted next line to get super key to bring up the menu in xfce and avoid error then in i3
 # activate again if errors occurr
@@ -518,12 +519,12 @@ bindsym $mod+F1 exec --no-startup-id exo-open --launch webbrowser;workspace 1;fo
 bindsym $mod+w exec --no-startup-id exo-open --launch webbrowser;workspace 1;focus
 bindsym control+mod1+f exec --no-startup-id firefox;workspace 1; focus
 bindsym control+mod1+v exec --no-startup-id vivaldi-stable;workspace 1; focus
-bindsym control+mod1+g exec --no-startup-id chromium-dev;workspace 1;focus
+bindsym control+mod1+g exec --no-startup-id chromium;workspace 1;focus
 
 #workspace 2 related
-bindsym $mod+F2 exec --no-startup-id geany;workspace 2;focus
+bindsym $mod+F2 exec --no-startup-id /opt/sublime_text/sublime_text;workspace 2;focus
 #bindsym $mod+F2 exec --no-startup-id atom;workspace 2;focus
-bindsym control+mod1+w exec --no-startup-id geany;workspace 2;focus
+bindsym control+mod1+w exec --no-startup-id /opt/sublime_text/sublime_text;workspace 2;focus
 
 #workspace 3 related
 bindsym $mod+F3 exec --no-startup-id inkscape;workspace 3;focus
@@ -830,7 +831,7 @@ bar {
 
     height 25
     workspace_buttons yes
-    font pango:Noto Sans 11
+    font pango:Noto Sans 10
     #you can know the name via xrandr
     #output DVI-0
 
