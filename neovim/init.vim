@@ -3,7 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic', {'for': ['purescript']}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
@@ -16,8 +16,8 @@ Plug 'junegunn/vim-easy-align'
 
 
 " Purescript
-Plug 'raichoo/purescript-vim'
-" Plug 'FrigoEU/psc-ide-vim'
+Plug 'raichoo/purescript-vim', {'for': 'purescript'}
+" Plug 'FrigoEU/psc-ide-vim', {'for': 'purescript'}
 
 
 " Haskell
@@ -25,10 +25,10 @@ Plug 'neomake/neomake'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
-Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+" Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
+" Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
-
+Plug 'owickstrom/neovim-ghci', { 'for': 'haskell' }
 
 
 " Style
@@ -37,7 +37,15 @@ Plug 'NLKNguyen/papercolor-theme'
 
 call plug#end()
 
+let g:python_host_prog = '/home/jimmy/.pyenv/versions/2.7.14/bin/python'
+let g:python3_host_prog = '/home/jimmy/.pyenv/versions/3.6.3/bin/python'
+
 let mapleader=","
+
+" https://andrew.stwrt.ca/posts/project-specific-vimrc/
+set exrc
+set secure
+
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,gbk,cp936,latin-1
 set fileformat=unix
@@ -66,6 +74,11 @@ set shiftwidth=2
 nnoremap <Leader>f :Files<CR>
 let g:swoopIgnoreCase = 1
 let g:airline_powerline_fonts = 1
+let g:airline_left_sep = "\uE0C0"
+let g:airline_right_sep = "\uE0C2"
+
+" set the CN (column number) symbol:
+let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
 
 
 
@@ -93,7 +106,7 @@ set grepprg=rg\ --vimgrep
 "au FileType purescript nmap <leader>s :Papply<CR>
 "au FileType purescript nmap <leader>p :Pursuit<CR>
 "au FileType purescript nmap <leader>g :Pgoto<CR>
-""nmap <leader>g <C-]>
+"""nmap <leader>g <C-]>
 
 "au FileType purescript nmap <leader>fm :set foldmethod=manual<CR>zE<CR>
 "au FileType purescript nmap <leader>fe :set foldmethod=expr<CR>
@@ -166,11 +179,47 @@ let g:haskell_conceal_enumerations = 1
 let hscoptions="𝐒𝐓𝐄𝐌xRtB𝔻w"
 
 " Disable haskell-vim omnifunc
-let g:haskellmode_completion_ghc = 0
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+" let g:haskellmode_completion_ghc = 0
+" autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
-hi ghcmodType ctermbg=black
-let g:ghcmod_type_highlight = 'ghcmodType'
+" hi ghcmodType ctermbg=black
+" let g:ghcmod_type_highlight = 'ghcmodType'
+
+augroup ghciMaps
+  au!
+  " Maps for ghci. Restrict to Haskell buffers so the bindings don't collide.
+
+  " Background process and window management
+  au FileType haskell nnoremap <silent> <leader>gs :GhciStart<CR>
+  au FileType haskell nnoremap <silent> <leader>gk :GhciKill<CR>
+
+  " Restarting GHCi might be required if you add new dependencies
+  au FileType haskell nnoremap <silent> <leader>gr :GhciRestart<CR>
+
+  " Open GHCi split horizontally
+  au FileType haskell nnoremap <silent> <leader>go :GhciOpen<CR>
+  " Open GHCi split vertically
+  au FileType haskell nnoremap <silent> <leader>gov :GhciOpen<CR><C-W>H
+  au FileType haskell nnoremap <silent> <leader>gh :GhciHide<CR>
+
+  " RELOADING (PICK ONE):
+
+  " Automatically reload on save
+  au BufWritePost *.hs GhciReload
+  " Manually save and reload
+  au FileType haskell nnoremap <silent> <leader>wr :w \| :GhciReload<CR>
+
+  " Load individual modules
+  au FileType haskell nnoremap <silent> <leader>gl :GhciLoadCurrentModule<CR>
+  au FileType haskell nnoremap <silent> <leader>gf :GhciLoadCurrentFile<CR>
+augroup END
+
+" GHCi starts automatically. Set this if you'd like to prevent that.
+let g:ghci_start_immediately = 0
+
+" Customize how to run GHCi
+let g:ghci_command = 'stack repl'
+let g:ghci_command_line_options = '--ghci-options="-fobject-code"'
 
 set tags=tags;/,codex.tags;/
 
@@ -187,8 +236,3 @@ function! Mydict()
   1
 endfunction
 nmap F :call Mydict()<CR>
-
-
-" https://andrew.stwrt.ca/posts/project-specific-vimrc/
-set exrc
-set secure

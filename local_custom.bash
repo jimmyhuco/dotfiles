@@ -4,8 +4,9 @@
 # # complete: bash-it git npm nvm pip3 ssh system  
 export VISUAL=nvim
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --follow --glob "!.git/*" --glob "!output/*" --glob "!bower_components/*" --glob "!.psc-package/*" --glob "!node_modules/*"'
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH=~/.rakudobrew/bin:$PATH
+export PATH="$PATH:$HOME/Codes/shell-functools/ft"
 
 alias pdf="zathura --fork"
 alias vim=nvim
@@ -59,4 +60,4 @@ function gh() {
   open $giturl
 }
 
-neofetch
+# neofetch
