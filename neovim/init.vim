@@ -17,7 +17,7 @@ Plug 'junegunn/vim-easy-align'
 
 " Purescript
 Plug 'raichoo/purescript-vim', {'for': 'purescript'}
-" Plug 'FrigoEU/psc-ide-vim', {'for': 'purescript'}
+Plug 'FrigoEU/psc-ide-vim', {'for': 'purescript'}
 
 
 " Haskell
@@ -37,8 +37,7 @@ Plug 'NLKNguyen/papercolor-theme'
 
 call plug#end()
 
-let g:python_host_prog = '/home/jimmy/.pyenv/versions/2.7.14/bin/python'
-let g:python3_host_prog = '/home/jimmy/.pyenv/versions/3.6.3/bin/python'
+let g:python3_host_prog = '/home/jimmy/.pyenv/shims/python3'
 
 let mapleader=","
 
@@ -92,29 +91,29 @@ let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!output/*" --glob "!bower_components/*" --glob "!.psc-package/*" --glob "!node_modules/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+" command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!output/*" --glob "!bower_components/*" --glob "!.psc-package/*" --glob "!node_modules/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 set grepprg=rg\ --vimgrep
 
 
 
 "Purescript
-"let g:psc_ide_log_level = 0
-"let g:psc_ide_syntastic_mode = 1
+let g:psc_ide_log_level = 0
+let g:psc_ide_syntastic_mode = 1
 
-"au FileType purescript map <leader>t :Ptype<CR>
-"au FileType purescript nmap <leader>s :Papply<CR>
-"au FileType purescript nmap <leader>p :Pursuit<CR>
-"au FileType purescript nmap <leader>g :Pgoto<CR>
-"""nmap <leader>g <C-]>
+au FileType purescript map <leader>t :Ptype<CR>
+au FileType purescript nmap <leader>s :Papply<CR>
+au FileType purescript nmap <leader>p :Pursuit<CR>
+au FileType purescript nmap <leader>g :Pgoto<CR>
+" nmap <leader>g <C-]>
 
-"au FileType purescript nmap <leader>fm :set foldmethod=manual<CR>zE<CR>
-"au FileType purescript nmap <leader>fe :set foldmethod=expr<CR>
-"au FileType purescript setlocal foldexpr=PureScriptFoldLevel(v:lnum)
+au FileType purescript nmap <leader>fm :set foldmethod=manual<CR>zE<CR>
+au FileType purescript nmap <leader>fe :set foldmethod=expr<CR>
+au FileType purescript setlocal foldexpr=PureScriptFoldLevel(v:lnum)
 
-"function! PureScriptFoldLevel(l)
-"  return getline(a:l) =~ "^\d*import"
-"endfunction
+function! PureScriptFoldLevel(l)
+ return getline(a:l) =~ "^\d*import"
+endfunction
 
 set completeopt=longest,menuone
 

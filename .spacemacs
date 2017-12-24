@@ -30,7 +30,9 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(vimscript
+     yaml
+     shell-scripts
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -47,19 +49,21 @@ values."
      (purescript :variables
                  psc-ide-editor-mode t)
      (haskell :variables
-              haskell-completion-backend 'intero)
+              haskell-completion-backend 'intero
+              haskell-process-type 'stack-ghci
+              haskell-enable-hindent-style "johan-tibell")
+     elixir
      html
-     (javascript :variables
-                 tern-command '("node" "/home/jimmy/.nvm/versions/node/v9.2.1/bin/tern"))
+     javascript
      python
-     perl6
+     ;; perl6
      ;; git
      markdown
      pdf-tools
      org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
      ;; spell-checking
      syntax-checking
      ;; version-control
@@ -150,7 +154,7 @@ values."
 
    ;; dotspacemacs-default-font '("FantasqueSansMono Nerd Font / Hasklig / Sarasa Mono SC / Fira Code / Source Code Pro / Iosevka / Hack / Fira Mono Medium / Latin Modern Mono / monofur / IBM Plex Mono"
    dotspacemacs-default-font '("IBM Plex Mono"
-                               :size 21
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -386,24 +390,8 @@ you should place your code here."
 
   (setq neo-theme 'icons)
 
+  (setq flycheck-elixir-credo-strict t)
+
+  ;; Haskell
+
   )
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (which-key dumb-jump yapfify ws-butler winum web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection spaceline slim-mode scss-mode sass-mode restart-emacs request rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode psci psc-ide popwin pip-requirements persp-mode perl6-mode pdf-tools pcre2el password-generator paradox org-projectile org-present org-pomodoro org-download org-bullets org-brain open-junk-file neotree move-text mmm-mode markdown-toc macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint json-mode js2-refactor js-doc intero info+ indent-guide impatient-mode hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-hoogle helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gnuplot gh-md fzf fuzzy flycheck-pos-tip flycheck-perl6 flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav editorconfig dracula-theme diminish define-word dante cython-mode company-web company-tern company-statistics company-ghci company-ghc company-cabal company-anaconda column-enforce-mode coffee-mode cmm-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile all-the-icons aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
