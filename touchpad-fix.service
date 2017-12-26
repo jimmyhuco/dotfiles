@@ -4,8 +4,8 @@ After=suspend.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/modprobe -r hid_rmi
-ExecStart=/usr/bin/modprobe hid_rmi
+ExecStart=/usr/sbin/modprobe -r hid_rmi
+ExecStart=/usr/sbin/modprobe hid_rmi
 
 [Install]
 WantedBy=suspend.target
