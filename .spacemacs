@@ -53,13 +53,18 @@ values."
               haskell-process-type 'stack-ghci
               haskell-enable-hindent-style "johan-tibell")
      elixir
+     erlang
+     elm
      html
-     javascript
+     (javascript :variables
+                 tern-command '("node" "/home/jimmy/.nvm/versions/node/v9.4.0/bin/tern"))
      python
+     ruby
+     common-lisp
      ;; perl6
-     ;; git
+     git
      markdown
-     pdf-tools
+     ;; pdf-tools
      org
      (shell :variables
             shell-default-height 30
@@ -344,7 +349,7 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  (spacemacs/toggle-transparency)
+  (spacemacs/enable-transparency)
 
   (use-package org-drill
     :after org
@@ -360,7 +365,7 @@ you should place your code here."
         '(("t" "Todo" entry (file+headline "~/Codes/org/gtd.org" "Tasks")
            "* TODO %?\n  %i\n  %a")
           ("j" "Journal" entry (file+olp+datetree "~/Codes/org/journal.org")
-           "* %?\nEntered on %U\n  %i\n")
+           "* Thank :Thank \n* Learn :Learn \n* Connect :Connect \nEntered on %U\n  %i\n")
           ("v" "Vocabulary" entry
            (file+headline "~/Codes/org/words-i-learned.org" "Vocabulary")
            "* %^{The word} :drill:\n Added: %U\n %^{Extended word (may be empty)|%\\1}\n** Answer \n%^{The definition}")))
@@ -368,12 +373,12 @@ you should place your code here."
 
 
 
-  (defun purescript-emmet ()
-    (interactive)
-    (let ((start (point))
-          (end (save-excursion (beginning-of-line-text) (point))))
-      (call-process-region start end "purescript-emmet" t t)))
-  (global-set-key (kbd "C-c C-e") 'purescript-emmet)
+  ;; (defun purescript-emmet ()
+  ;;   (interactive)
+  ;;   (let ((start (point))
+  ;;         (end (save-excursion (beginning-of-line-text) (point))))
+  ;;     (call-process-region start end "purescript-emmet" t t)))
+  ;; (global-set-key (kbd "C-c C-e") 'purescript-emmet)
 
   (add-hook 'purescript-mode-hook
             (lambda ()
@@ -392,6 +397,28 @@ you should place your code here."
 
   (setq flycheck-elixir-credo-strict t)
 
-  ;; Haskell
+  (setq inferior-lisp-program "ros -L sbcl -Q -l ~/.sbclrc run")
+  (setq slime-contribs '(slime-fancy))
 
   )
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (web-mode org-brain flycheck-haskell anaconda-mode counsel swiper ivy helm magit yasnippet-snippets yapfify yaml-mode xterm-color ws-butler winum which-key web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection spaceline-all-the-icons smeargle slime-company slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe restart-emacs rbenv rake rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode psci psc-ide popwin pippel pip-requirements persp-mode password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file ob-elixir neotree nameless multi-term move-text mmm-mode minitest markdown-toc magit-gitflow lorem-ipsum livid-mode live-py-mode linum-relative link-hint json-mode js2-refactor js-doc intero insert-shebang indent-guide importmagic impatient-mode hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-commit ghub gh-md fzf fuzzy flycheck-pos-tip flycheck-mix flycheck-elm flycheck-credo flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help erlang emmet-mode elm-mode elisp-slime-nav editorconfig dumb-jump dracula-theme diminish define-word dante dactyl-mode cython-mode counsel-projectile company-web company-tern company-statistics company-shell company-ghci company-ghc company-cabal company-anaconda common-lisp-snippets column-enforce-mode coffee-mode cmm-mode clean-aindent-mode chruby centered-cursor-mode bundler auto-yasnippet auto-highlight-symbol auto-compile alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(tramp-syntax (quote default) nil (tramp)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
