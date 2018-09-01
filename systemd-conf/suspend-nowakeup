@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# /lib/systemd/system-sleep/suspend-nowakeup
+# Disable USB wakeups caused by (un)plugging new devices. Otherwise the hub in
+# my USB monitor causes my PC to wake up when I turn the monitor off.
+for device in EHC1 EHC2 XHC
+do
+    if grep -q "$device.*enabled" /proc/acpi/wakeup
+    then
+        echo $device > /proc/acpi/wakeup
+    fi
+done
