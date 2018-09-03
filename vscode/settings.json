@@ -1,0 +1,76 @@
+{
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontSize": 15,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.renderIndentGuides": false,
+  "html.format.wrapLineLength": 0,
+  "html.suggest.angular1": false,
+  "html.suggest.ionic": false,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "stylelint.config": {
+    "extends": "/home/jimmy/.config/yarn/global/node_modules/stylelint-config-recommended"
+  },
+  "javascript.validate.enable": false,
+  "prettier.disableLanguages": ["javascript", "javascriptreact", "json"],
+  "standard.autoFixOnSave": true,
+  "standard.validate": ["javascript", "javascriptreact"],
+  "standard.nodePath": "/home/jimmy/.yarn/bin/standard",
+  "workbench.startupEditor": "newUntitledFile",
+  "terminal.integrated.rendererType": "dom",
+  "stylelint.enable": true,
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/bin/nvim",
+  "vim.easymotion": true,
+  "vim.sneak": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["<leader>", "m"],
+      "commands": ["bookmarks.toggle"]
+    },
+    {
+      "before": ["<leader>", "b"],
+      "commands": ["bookmarks.list"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "workbench.colorTheme": "Dracula",
+  "workbench.statusBar.feedback.visible": false
+}
