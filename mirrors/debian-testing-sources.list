@@ -1,0 +1,10 @@
+deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+
+deb https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+
+deb https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
+deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/debian buster stable
+# deb-src [arch=amd64] https://download.docker.com/linux/debian buster stable
