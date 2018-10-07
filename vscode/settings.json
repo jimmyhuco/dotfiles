@@ -1,29 +1,29 @@
 {
   "editor.fontLigatures": true,
-  "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-  "editor.fontSize": 15,
+  "editor.fontFamily": "'mononoki','Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontSize": 16,
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
   "editor.renderIndentGuides": false,
+  "editor.formatOnSave": true,
   "html.format.wrapLineLength": 0,
   "html.suggest.angular1": false,
   "html.suggest.ionic": false,
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "stylelint.config": {
-    "extends": "/home/jimmy/.config/yarn/global/node_modules/stylelint-config-recommended"
-  },
   "javascript.validate.enable": false,
   "prettier.disableLanguages": ["javascript", "javascriptreact", "json"],
   "standard.autoFixOnSave": true,
   "standard.validate": ["javascript", "javascriptreact"],
-  "standard.nodePath": "/home/jimmy/.yarn/bin/standard",
+  "tslint.autoFixOnSave": true,
   "workbench.startupEditor": "newUntitledFile",
   "terminal.integrated.rendererType": "dom",
   "stylelint.enable": true,
+  "stylelint.config": {
+    "extends": "/home/jimmy/.nvm/versions/node/v8.12.0/lib/node_modules/stylelint-config-recommended"
+  },
+  "typescript.tsdk": "/home/jimmy/.nvm/versions/node/v8.12.0/lib/node_modules/typescript/lib",
   "vim.enableNeovim": true,
   "vim.neovimPath": "/usr/bin/nvim",
   "vim.easymotion": true,
@@ -53,7 +53,7 @@
     },
     {
       "before": ["<leader>", "b"],
-      "commands": ["bookmarks.list"]
+      "commands": ["bookmarks.listFromAllFiles"]
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
@@ -72,5 +72,7 @@
     "<C-f>": false
   },
   "workbench.colorTheme": "Dracula",
-  "workbench.statusBar.feedback.visible": false
+  "workbench.statusBar.feedback.visible": false,
+  "terminal.integrated.fontFamily": "monospace",
+  "terminal.integrated.fontSize": 16
 }
