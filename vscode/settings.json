@@ -1,11 +1,11 @@
 {
   "editor.fontLigatures": true,
-  "editor.fontFamily": "'mononoki','Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontFamily": "'IBM Plex Mono','mononoki','Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.fontSize": 16,
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "editor.renderIndentGuides": false,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "html.format.wrapLineLength": 0,
   "html.suggest.angular1": false,
   "html.suggest.ionic": false,
@@ -16,6 +16,9 @@
   "prettier.disableLanguages": ["javascript", "javascriptreact", "json"],
   "standard.autoFixOnSave": true,
   "standard.validate": ["javascript", "javascriptreact"],
+  "standard.options": {
+    "parser": "babel-eslint"
+  },
   "tslint.autoFixOnSave": true,
   "workbench.startupEditor": "newUntitledFile",
   "terminal.integrated.rendererType": "dom",
@@ -74,5 +77,18 @@
   "workbench.colorTheme": "Dracula",
   "workbench.statusBar.feedback.visible": false,
   "terminal.integrated.fontFamily": "monospace",
-  "terminal.integrated.fontSize": 16
+  "terminal.integrated.fontSize": 16,
+  "reason.diagnostics.tools": [
+    "merlin",
+    "bsb"
+  ],
+  "git.autofetch": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true
+  }
 }
